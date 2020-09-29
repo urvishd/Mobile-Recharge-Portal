@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OTP verification</title>
+    <style>
+input[type=text], select {
+  width: 10%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 6%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button] {
+  width: 6%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<center>
+    <form action="/accounts/otp_verification1/" method="POST">
+    {% csrf_token %}<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   <font color="#8a2be2" ><h3>OTP has been sent to your registered Mail ID!!</h3><br></font>
+    Enter OTP:<input type="text"  maxlength="6" minlength="6" name="otp1" minlength="6"><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" value="submit"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="button" onclick="window.location.href = '/accounts/index_page/';" name="cancel" value="Cancel"><br>
+     {% for message in messages %}
+                            <h5>{{ message }}</h5>
+                        {% endfor %}
+    </form>
+    </center>
+</body>
+</html>

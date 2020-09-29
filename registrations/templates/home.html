@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Mobile Recharge</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{% static 'plan/css/bootstrap.css' %}" rel="stylesheet">
+<link href="{% static 'plan/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Easy Recharge Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<!--fonts-->
+<link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!--//fonts-->
+<!-- js -->
+<script type="text/javascript" src="{% static 'plan/js/jquery.min.js' %}"></script>
+<!-- js -->
+<!--animate-->
+<link href="{% static 'plan/css/animate.css' %}" rel="stylesheet" type="text/css" media="all">
+<script src="{% static 'plan/js/wow.min.js' %}"></script>
+	<script>
+		 new WOW().init();
+	</script>
+<!--//end-animate-->
+<script>
+									$(document).ready(function () {
+										//Initialize tooltips
+										$('.nav-tabs > li a[title]').tooltip();
+
+										//Wizard
+										$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+											var $target = $(e.target);
+
+											if ($target.parent().hasClass('disabled')) {
+												return false;
+											}
+										});
+
+										$(".next-step").click(function (e) {
+
+											var $active = $('.wizard .nav-tabs li.active');
+											$active.next().removeClass('disabled');
+											nextTab($active);
+
+										});
+										$(".prev-step").click(function (e) {
+
+											var $active = $('.wizard .nav-tabs li.active');
+											prevTab($active);
+
+										});
+									});
+
+									function nextTab(elem) {
+										$(elem).next().find('a[data-toggle="tab"]').click();
+									}
+									function prevTab(elem) {
+										$(elem).prev().find('a[data-toggle="tab"]').click();
+									}
+								</script>
+    </head>
+
+        <style>
+        body {
+            background-color: #ddd;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        .navbar a {
+          float: left;
+          font-size: 16px;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        .dropdown {
+          float: left;
+          overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+          font-size: 16px;
+          border: none;
+          outline: none;
+          color: white;
+          padding: 14px 16px;
+          background-color: inherit;
+          font-family: inherit;
+          margin: 0;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+          background-color: cornflowerblue;
+        }
+
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        .dropdown-content a {
+          float: none;
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
+
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+        form {
+            height: 100px;
+        margin: 0 auto;
+        margin-left: 35%;
+        margin-top: 15%;
+        }
+        </style>
+    <div class="banner page-head">
+	<div class="header">
+			<div class="logo">
+			   <h1><a href="index.html"><i><img src="{% static 'plan/images/cell.png' %}" alt=" " /></i>Freerecharge</a></h1>
+			</div>
+			<div class="top-nav">
+				<span class="menu"><img src="{% static 'plan/images/menu.png' %}" alt=" " /></span>
+				<ul class="nav1">
+                    <li><a href="/accounts/profile_view/" data-toggle="modal" data-target="/accounts/profile_view/">Profile</a></li>
+					<li><a href="/accounts/transactions/" data-toggle="modal" data-target="/accounts/transactions/">Transactions</a></li>
+
+					<li><a href="/accounts/logout/" data-toggle="modal" data-target="/accounts/logout/">Logout</a></li>
+				</ul>
+						<!-- script-for-menu -->
+						 <script>
+						   $( "span.menu" ).click(function() {
+							 $( "ul.nav1" ).slideToggle( 300, function() {
+							 // Animation complete.
+							  });
+							 });
+						</script>
+						<!-- /script-for-menu -->
+			</div>
+			<div class="clearfix"> </div>
+	</div>
+	<div class="container">
+
+			<div class="clearfix"> </div>
+	</div>
+
+</div>
+<div class="banner-bottom" >
+	<font color="#a52a2a"> <h2>Hello {{ user.first_name }}</h2></font>
+        <form action="/accounts/payment_page/" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>
+                        Mobile No. :
+                    </td>
+                    <td>
+                        <input type="text" name="mobile" value=""  maxlength="10" minlength="10"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        Operator :
+                    </td>
+                    <td>
+                        <select name="Operator">
+                            <option name="Idea" value="Idea">Idea</option>
+                            <option name="Vodafone" value="Idea">Vodafone</option>
+                            <option name="Jio" value="Jio">Jio</option>
+                            <option name="Airtel" value="Airtel">Airtel</option>
+                            <option name="BSNL" value="BSNL">BSNL</option>
+                        </select>
+                    </td>
+                     <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" name='Plan_button' value="plans"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Amount:
+                    </td>
+                    <td>
+                        <input type="text" name="amount" value=""  maxlength="5" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="pay" name="pay"/>
+                    </td>
+                </tr>
+            </table>
+
+	</div>
+</div>
+			<!-- //signup -->
+<div class="content-bottom-two">
+		<div class="col-md-6 content-left text-center">
+			<img src="{% static 'plan/images/bbb5.png' %}" alt="" />
+		</div>
+		<div class="col-md-6 content-right text-center">
+			<img src="{% static 'plan/images/bbb3.png' %}" alt="" />
+		</div>
+		<div class="clearfix"></div>
+		<div class="btm-pos">
+			<h3>Exclusive Service</h3>
+			<p> Your money is yours until you got paid for it. </p>
+		</div>
+</div>
+<div class="footer-top">
+
+</div>
+
+<div class="footer">
+	<div class="container">
+		<h2><a href="index.html">Freerecharge</a></h2>
+		<p>© 2020 Freerecharge payments Ltd.  All Rights Reserved </p>
+
+	</div>
+</div>
+<!-- for bootstrap working -->
+		<script src="{% static 'plan/js/bootstrap.js' %}"></script>
+<!-- //for bootstrap working -->
+    </form>
+    </body>
+</html>
